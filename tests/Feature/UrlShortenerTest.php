@@ -25,7 +25,7 @@ class UrlShortenerTest extends TestCase
         $this->assertDatabaseHas('url_shorteners', ['long' => $url, 'short' => $urlShortener['short_url']]);
         $this->assertEquals($content->short_url, $urlShortener['short_url']); //compare to database. once exists it means generated
         $response->assertJson(['status' => true]);
-        $response->assertStatus(200);
+        $response->assertStatus(201);
     }
 
     public function test_it_can_retrieve_shortened_url_if_exists(): void
@@ -40,7 +40,7 @@ class UrlShortenerTest extends TestCase
         $this->assertDatabaseHas('url_shorteners', ['long' => $urlShortener['long_url'], 'short' => $urlShortener['short_url']]);
         $this->assertEquals($content->short_url, $urlShortener['short_url']); //compare to database. once exists it means generated
         $response->assertJson(['status' => true]);
-        $response->assertStatus(200);
+        $response->assertStatus(201);
     }
 
     public function test_it_can_retrieve_all_shortened_urls(): void{
