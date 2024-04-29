@@ -17,12 +17,12 @@ class UrlShortenerController extends Controller
         $urlShortener = $urlShortenerService->generateShortUrl($request->url);
 
         $response = array_merge(["status" => true], $urlShortener);
-        return response()->json($response);
+        return response()->json($response, 201);
 
     }
     public function list(Request $request): JsonResponse
     {
         $list = UrlShortener::all();
-        return response()->json($list);
+        return response()->json($list, 200);
     }
 }
